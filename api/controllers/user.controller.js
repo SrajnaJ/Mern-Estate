@@ -11,7 +11,11 @@ export const test = (req, res) => {
 // Compare this snippet from api/routes/user.route.js
 
 export const updateUser = async (req, res, next) => {
-  if (req.user.id != req.params.id)
+  console.log("user:  " + req.user.id);
+  console.log("param:  " + req.params.id);
+  console.log(req.user.id !== req.params.id);
+
+  if (req.user.id !== req.params.id)
     return next(errorHandler(401, "You can only update your own account"));
 
   try {
